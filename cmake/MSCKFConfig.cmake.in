@@ -1,0 +1,8 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/MSCKFTargets.cmake")
+
+check_required_components(MSCKF)
+
+message(STATUS "Found MSCKF: ${CMAKE_CURRENT_LIST_DIR}")
+message(STATUS "MSCKF Version: @PROJECT_VERSION@")
