@@ -75,46 +75,6 @@ make
 
 使用J-Link或OpenOCD烧录至目标板，串口输出位姿数据。
 
----
-
-## 使用说明
-
-### 硬件连接
-
-- IMU接I2C/SPI
-- 相机接MIPI/DVP
-- 调试串口接UART
-
-### 参数配置
-
-编辑配置文件，设置：
-- 相机内参（焦距、主点、畸变系数）
-- IMU噪声参数（陀螺仪/加速度计噪声、偏置随机游走）
-- 外参初值（相机-IMU变换）
-
-### 启动运行
-
-上电自动初始化，约30秒旋转激活外参标定，进入正常定位模式。
-
----
-
-## 项目结构
-
-```
-CppMSCKF-Zero/
-├── include/
-│   ├── math/              # 数学库（矩阵、四元数、李代数、定点运算）
-│   ├── core/              # 核心算法（状态、IMU传播、视觉更新、边缘化）
-│   ├── vision/            # 视觉处理（角点检测、KLT跟踪、图像处理）
-│   ├── hal/               # 硬件抽象层（IMU、相机、电源管理）
-│   ├── system/            # 系统模块（内存池、无锁队列、调度器）
-│   ├── collaborative/     # 多机协同（可选）
-│   ├── semantic/          # 语义辅助（可选）
-│   └── utility/           # 工具模块（返航、电池管理、黑匣子）
-└── msckf_estimator.hpp    # 主估计器接口
-```
-
----
 
 ## 开源协议
 
@@ -207,47 +167,6 @@ make
 ### Deployment
 
 Flash via J-Link or OpenOCD, pose output via UART.
-
----
-
-## Usage
-
-### Hardware
-
-- IMU to I2C/SPI
-- Camera to MIPI/DVP
-- Debug UART
-
-### Configuration
-
-Edit configuration file to set:
-- Camera intrinsics (focal length, principal point, distortion)
-- IMU noise parameters (gyro/accel noise, bias random walk)
-- Extrinsic initial values (camera-IMU transform)
-
-### Operation
-
-Power on for auto-initialization, ~30s rotation for extrinsic calibration, then normal mode.
-
----
-
-## Project Structure
-
-```
-CppMSCKF-Zero/
-├── include/
-│   ├── math/              # Math library (matrix, quaternion, Lie algebra, fixed-point)
-│   ├── core/              # Core algorithm (state, IMU propagation, visual update, marginalization)
-│   ├── vision/            # Vision processing (corner detection, KLT tracking, image processing)
-│   ├── hal/               # Hardware abstraction (IMU, camera, power management)
-│   ├── system/            # System modules (memory pool, lock-free queue, scheduler)
-│   ├── collaborative/     # Multi-UAV collaboration (optional)
-│   ├── semantic/          # Semantic assistance (optional)
-│   └── utility/           # Utilities (RTH, battery manager, black box)
-└── msckf_estimator.hpp    # Main estimator interface
-```
-
----
 
 ## License
 
